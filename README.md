@@ -6,7 +6,7 @@
 
 **Definición:** Sistema de seguridad de red que monitorea y controla el tráfico de entrada y salida según reglas predefinidas, actuando como barrera entre redes confiables y no confiables.
 ```
-
+https://www.google.com/imgres?q=FIREWALL&imgurl=https%3A%2F%2Fexa.net.uk%2Fwp-content%2Fuploads%2F2021%2F06%2FWhat-is-a-firewall-768x461.png&imgrefurl=https%3A%2F%2Fexa.net.uk%2Fknowledge-hub%2Fsecurity%2Fwhat-is-a-firewall%2F&docid=UbqqA2BO52d9kM&tbnid=hn8JFj-KSuL7AM&vet=12ahUKEwiA8MurmJ2TAxWcmGoFHbnADp0QnPAOegQIHBAB..i&w=768&h=461&hcb=2&ved=2ahUKEwiA8MurmJ2TAxWcmGoFHbnADp0QnPAOegQIHBAB
 ```
 
 
