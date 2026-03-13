@@ -1,38 +1,15 @@
 # 🔐 Glosario de Seguridad en Redes de Comunicaciones
-> Mecanismos de Control de Acceso, Cifrado, Monitoreo y Gestión de Amenazas
-
-![Seguridad](https://img.shields.io/badge/Tema-Seguridad%20en%20Redes-1A2B4A?style=for-the-badge)
-![Términos](https://img.shields.io/badge/Términos-15-2E75B6?style=for-the-badge)
-![Año](https://img.shields.io/badge/Año-2026-green?style=for-the-badge)
 
 ---
-
-## 📑 Índice de Categorías
-
-| Categoría | Términos |
-|-----------|----------|
-| [🔐 Control de Acceso](#-control-de-acceso) | Firewall, VPN, MFA, RBAC |
-| [🔒 Cifrado](#-cifrado) | SSL/TLS, AES, PKI, Criptografía Asimétrica |
-| [👁️ Monitoreo](#️-monitoreo) | IDS/IPS, SIEM, Análisis de Tráfico, Log de Auditoría |
-| [⚠️ Gestión de Amenazas](#️-gestión-de-amenazas) | DDoS, Phishing, Zero-Day |
-
----
-
-## 🔐 Control de Acceso
 
 ### 1. Firewall (Cortafuegos)
 
 **Definición:** Sistema de seguridad de red que monitorea y controla el tráfico de entrada y salida según reglas predefinidas, actuando como barrera entre redes confiables y no confiables.
 ```
-[INTERNET 🌐] ──► [🔥 FIREWALL 🔥] ──► [RED INTERNA 🏢]
+
 ```
 
-| Puerto | Protocolo | Acción |
-|--------|-----------|--------|
-| 80 | HTTP | ✅ ALLOW |
-| 443 | HTTPS | ✅ ALLOW |
-| 23 | Telnet | ❌ DENY |
-| 3389 | RDP | ❌ DENY |
+
 
 > 💼 **Aplicación práctica:** En una empresa, el firewall bloquea conexiones no autorizadas desde Internet, permite solo HTTP/HTTPS y bloquea puertos peligrosos como el 23 (Telnet).
 
