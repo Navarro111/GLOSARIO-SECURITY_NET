@@ -1,26 +1,53 @@
 # 🔐 Glosario de Seguridad en Redes de Comunicaciones
+> Mecanismos de Control de Acceso, Cifrado, Monitoreo y Gestión de Amenazas
+
+![Seguridad](https://img.shields.io/badge/Tema-Seguridad%20en%20Redes-1A2B4A?style=for-the-badge)
+![Términos](https://img.shields.io/badge/Términos-15-2E75B6?style=for-the-badge)
+![Año](https://img.shields.io/badge/Año-2026-green?style=for-the-badge)
 
 ---
 
+## 📑 Índice
+
+| Categoría | Términos |
+|-----------|----------|
+| [🔐 Control de Acceso](#-control-de-acceso) | Firewall, VPN, MFA, RBAC |
+| [🔒 Cifrado](#-cifrado) | SSL/TLS, AES, PKI, Criptografía Asimétrica |
+| [👁️ Monitoreo](#️-monitoreo) | IDS/IPS, SIEM, Análisis de Tráfico, Log de Auditoría |
+| [⚠️ Gestión de Amenazas](#️-gestión-de-amenazas) | DDoS, Phishing, Zero-Day |
+
+---
+
+## 🔐 Control de Acceso
+
 ### 1. Firewall (Cortafuegos)
 
-**Definición:** Sistema de seguridad de red que monitorea y controla el tráfico de entrada y salida según reglas predefinidas, actuando como barrera entre redes confiables y no confiables.
+<img src="https://www.conceptdraw.com/How-To-Guide/picture/Network-Security-Diagrams-Solution.png" width="500" alt="Firewall Diagram">
+
+**Definición:** Sistema de seguridad que monitorea y controla el tráfico de red según reglas predefinidas, actuando como barrera entre redes confiables y no confiables.
 ```
-https://www.google.com/imgres?q=FIREWALL&imgurl=https%3A%2F%2Fexa.net.uk%2Fwp-content%2Fuploads%2F2021%2F06%2FWhat-is-a-firewall-768x461.png&imgrefurl=https%3A%2F%2Fexa.net.uk%2Fknowledge-hub%2Fsecurity%2Fwhat-is-a-firewall%2F&docid=UbqqA2BO52d9kM&tbnid=hn8JFj-KSuL7AM&vet=12ahUKEwiA8MurmJ2TAxWcmGoFHbnADp0QnPAOegQIHBAB..i&w=768&h=461&hcb=2&ved=2ahUKEwiA8MurmJ2TAxWcmGoFHbnADp0QnPAOegQIHBAB
+[INTERNET 🌐] ──► [🔥 FIREWALL 🔥] ──► [RED INTERNA 🏢]
 ```
 
+| Puerto | Protocolo | Acción |
+|--------|-----------|--------|
+| 80 | HTTP | ✅ ALLOW |
+| 443 | HTTPS | ✅ ALLOW |
+| 23 | Telnet | ❌ DENY |
+| 3389 | RDP | ❌ DENY |
 
-
-> 💼 **Aplicación práctica:** En una empresa, el firewall bloquea conexiones no autorizadas desde Internet, permite solo HTTP/HTTPS y bloquea puertos peligrosos como el 23 (Telnet).
+> 💼 **Aplicación práctica:** Bloquea conexiones no autorizadas, permite solo HTTP/HTTPS y bloquea puertos peligrosos como el 23 (Telnet).
 
 ---
 
 ### 2. VPN (Red Privada Virtual)
 
-**Definición:** Tecnología que crea un túnel cifrado seguro sobre una red pública, permitiendo acceso remoto a recursos privados de forma segura.
+<img src="https://www.sanfoundry.com/wp-content/uploads/2023/09/vpn-diagram.png" width="500" alt="VPN Diagram">
+
+**Definición:** Tecnología que crea un túnel cifrado sobre una red pública, permitiendo acceso remoto seguro a recursos privados.
 ```
-[💻 Empleado] ══🔒 TÚNEL VPN CIFRADO 🔒══► [🏢 Servidor Empresarial]
-     Casa/Cafetería          Internet              Red Corporativa
+[💻 Empleado] ══🔒 TÚNEL VPN CIFRADO 🔒══► [🏢 Servidor]
+     Casa                Internet              Empresa
 ```
 
 | Aspecto | Detalle |
@@ -30,13 +57,15 @@ https://www.google.com/imgres?q=FIREWALL&imgurl=https%3A%2F%2Fexa.net.uk%2Fwp-co
 | Uso | Teletrabajo seguro |
 | Protección | Anti Man-in-the-Middle |
 
-> 💼 **Aplicación práctica:** Un empleado en teletrabajo se conecta a servidores corporativos como si estuviera en la oficina, con comunicación completamente cifrada.
+> 💼 **Aplicación práctica:** El empleado en teletrabajo se conecta a servidores corporativos con comunicación completamente cifrada.
 
 ---
 
 ### 3. MFA — Autenticación Multifactor
 
-**Definición:** Método de verificación que requiere dos o más factores independientes para confirmar la identidad de un usuario.
+<img src="https://www.imperva.com/learn/wp-content/uploads/sites/13/2019/01/multi-factor-authentication.jpg" width="500" alt="MFA Diagram">
+
+**Definición:** Verificación de identidad que requiere dos o más factores independientes para conceder acceso.
 ```
 [1️⃣ Contraseña] ──► [2️⃣ Código OTP] ──► [3️⃣ Huella] ──► ✅ ACCESO
 ```
@@ -47,13 +76,15 @@ https://www.google.com/imgres?q=FIREWALL&imgurl=https%3A%2F%2Fexa.net.uk%2Fwp-co
 | Algo que **TIENES** | Token, Smartphone | 🟠 Medio-Alto |
 | Algo que **ERES** | Huella, Facial | 🟢 Alto |
 
-> 💼 **Aplicación práctica:** Al acceder al banco online, el usuario ingresa contraseña + código OTP en su smartphone, bloqueando accesos no autorizados aunque la contraseña sea robada.
+> 💼 **Aplicación práctica:** Banca online: contraseña + OTP en smartphone bloquea accesos no autorizados aunque la contraseña sea robada.
 
 ---
 
 ### 4. RBAC — Control de Acceso Basado en Roles
 
-**Definición:** Modelo donde los permisos se asignan a roles específicos y los usuarios heredan los permisos del rol asignado.
+<img src="https://www.treewebsolutions.com/wp-content/uploads/2021/03/rbac.png" width="500" alt="RBAC Diagram">
+
+**Definición:** Modelo donde los permisos se asignan a roles y los usuarios heredan los permisos del rol asignado.
 
 | Rol | Leer | Escribir | Eliminar | Configurar | Auditar |
 |-----|------|----------|----------|------------|---------|
@@ -62,7 +93,7 @@ https://www.google.com/imgres?q=FIREWALL&imgurl=https%3A%2F%2Fexa.net.uk%2Fwp-co
 | 👤 Usuario | ✅ | ✅ | ❌ | ❌ | ❌ |
 | 🔍 Auditor | ✅ | ❌ | ❌ | ❌ | ✅ |
 
-> 💼 **Aplicación práctica:** En un hospital, médicos leen y escriben historias clínicas, enfermeras solo leen, y administrativos acceden únicamente a facturación — cumpliendo HIPAA/GDPR.
+> 💼 **Aplicación práctica:** En un hospital, cada rol accede solo a la información que necesita — cumpliendo HIPAA/GDPR.
 
 ---
 
@@ -70,23 +101,26 @@ https://www.google.com/imgres?q=FIREWALL&imgurl=https%3A%2F%2Fexa.net.uk%2Fwp-co
 
 ### 5. SSL/TLS
 
-**Definición:** Protocolos criptográficos que proporcionan comunicación segura en Internet usando certificados digitales para autenticar servidores y cifrar el tráfico.
+<img src="https://www.cloudflare.com/img/learning/security/glossary/what-is-ssl/ssl-handshake-diffie-hellman.svg" width="500" alt="TLS Handshake">
+
+**Definición:** Protocolos criptográficos que cifran el tráfico entre cliente y servidor usando certificados digitales.
 ```
-CLIENTE                                          SERVIDOR
-  │──── 1. ClientHello ───────────────────────────►│
-  │◄─── 2. ServerHello + Certificado ──────────────│
-  │──── 3. Verificación de Certificado ───────────►│
-  │◄─── 4. Intercambio de Claves ──────────────────│
-  │════════ 🔒 CANAL CIFRADO AES-256 (Puerto 443) ═│
+CLIENTE                                    SERVIDOR
+  │──── 1. ClientHello ──────────────────────►│
+  │◄─── 2. ServerHello + Certificado ─────────│
+  │──── 3. Verificación ──────────────────────►│
+  │════════ 🔒 CANAL CIFRADO (Puerto 443) ═════│
 ```
 
-> 💼 **Aplicación práctica:** El candado 🔒 en tu navegador al acceder a `https://` indica SSL/TLS activo, protegiendo credenciales y transacciones de ataques intermediarios.
+> 💼 **Aplicación práctica:** El candado 🔒 en tu navegador indica SSL/TLS activo protegiendo tus datos bancarios.
 
 ---
 
 ### 6. AES — Advanced Encryption Standard
 
-**Definición:** Algoritmo de cifrado simétrico estándar del gobierno de EE.UU., opera en bloques de 128 bits. Considerado el estándar de oro en cifrado moderno.
+<img src="https://www.researchgate.net/publication/334925724/figure/fig2/AS:788232836091909@1564969468483/Diagram-of-the-AES-encryption-algorithm.png" width="500" alt="AES Encryption">
+
+**Definición:** Algoritmo de cifrado simétrico estándar del gobierno de EE.UU., considerado el estándar de oro en cifrado moderno.
 
 | Versión | Tamaño Clave | N° Rondas | Seguridad |
 |---------|-------------|-----------|-----------|
@@ -94,21 +128,15 @@ CLIENTE                                          SERVIDOR
 | AES-192 | 192 bits | 12 | 🟢 Muy Alto |
 | AES-256 | 256 bits | 14 | 🔴 Máximo (Militar) |
 
-> 💼 **Aplicación práctica:** BitLocker (Windows) y FileVault (Mac) usan AES-256 para cifrar discos duros, haciendo ilegible la información si el dispositivo es robado.
+> 💼 **Aplicación práctica:** BitLocker y FileVault usan AES-256 para cifrar discos duros completos.
 
 ---
 
 ### 7. PKI — Infraestructura de Clave Pública
 
-**Definición:** Sistema de políticas y tecnologías para crear, gestionar, distribuir y revocar certificados digitales que vinculan claves públicas con identidades verificadas.
-```
-        🏛️ CA RAÍZ
-            │
-    ┌───────┼───────┐
-    │       │       │
-🏢 CA   🏢 CA   🏢 CA
-Intermedia Intermedia Intermedia
-```
+<img src="https://www.keyfactor.com/wp-content/uploads/pki-diagram.png" width="500" alt="PKI Hierarchy">
+
+**Definición:** Sistema para crear, gestionar, distribuir y revocar certificados digitales que vinculan claves públicas con identidades verificadas.
 
 | Componente | Función |
 |------------|---------|
@@ -117,28 +145,29 @@ Intermedia Intermedia Intermedia
 | CRL | Lista de certificados revocados |
 | OCSP | Verificación en tiempo real |
 
-> 💼 **Aplicación práctica:** Una empresa emite certificados a empleados para firmar documentos electrónicos y autenticarse en sistemas internos, con posibilidad de revocar accesos comprometidos.
+> 💼 **Aplicación práctica:** Las empresas emiten certificados digitales a empleados para firmar documentos y autenticarse en sistemas internos.
 
 ---
 
 ### 8. Criptografía Asimétrica
 
-**Definición:** Sistema que usa un par de claves matemáticamente relacionadas: clave pública (cifrar) y clave privada (descifrar), basado en problemas matemáticos computacionalmente difíciles.
+<img src="https://sectigo.com/uploads/images/Asymmetric-Encryption.png" width="500" alt="Asymmetric Cryptography">
+
+**Definición:** Sistema con dos claves matemáticamente relacionadas: clave pública (cifrar) y clave privada (descifrar).
 ```
-🔑 Clave Pública          🗝️ Clave Privada
-  (Compartida)               (Secreta)
-       │                         │
-📧 "Hola Mundo" ──► 🔒 "x9$K2m#..." ──► 📧 "Hola Mundo"
+🔑 Clave Pública       🗝️ Clave Privada
+  (Compartida)             (Secreta)
+       │                       │
+📧 Mensaje ──► 🔒 Cifrado ──► 📧 Mensaje
 ```
 
 | Característica | Simétrica (AES) | Asimétrica (RSA) |
 |----------------|-----------------|------------------|
-| Claves | 1 clave | 2 claves (par) |
-| Velocidad | 🟢 Muy rápida | 🔴 Lenta |
+| Claves | 1 | 2 (par) |
+| Velocidad | 🟢 Rápida | 🔴 Lenta |
 | Uso típico | Datos grandes | Claves, firmas |
-| Ejemplo | AES-256 | RSA-2048, ECC |
 
-> 💼 **Aplicación práctica:** PGP usa criptografía asimétrica: cualquiera cifra con tu clave pública, solo tú descifras con tu clave privada — sin necesidad de compartir secretos previamente.
+> 💼 **Aplicación práctica:** PGP usa criptografía asimétrica — cualquiera cifra con tu clave pública, solo tú descifras con tu clave privada.
 
 ---
 
@@ -146,141 +175,136 @@ Intermedia Intermedia Intermedia
 
 ### 9. IDS/IPS
 
-**Definición:** IDS detecta actividades sospechosas y genera alertas. IPS va más allá bloqueando activamente las amenazas en tiempo real.
+<img src="https://www.thedatasilk.com/wp-content/uploads/2023/01/IDS-IPS-diagram.jpg" width="500" alt="IDS IPS Diagram">
+
+**Definición:** IDS detecta amenazas y alerta. IPS detecta amenazas **y las bloquea** activamente en tiempo real.
 ```
-🔍 IDS (Pasivo)          🛡️ IPS (Activo)
-  1. Detecta               1. Detecta
-  2. Analiza               2. Analiza
-  3. 🚨 Alerta             3. 🚫 BLOQUEA
-                           4. 🚨 Alerta
+🔍 IDS (Pasivo)        🛡️ IPS (Activo)
+  1. Detecta             1. Detecta
+  2. Analiza             2. Analiza
+  3. 🚨 Alerta           3. 🚫 BLOQUEA
+                         4. 🚨 Alerta
 ```
 
 | Tipo | Descripción |
 |------|-------------|
-| NIDS | Network IDS — Monitorea tráfico de red |
-| HIDS | Host IDS — Monitorea un sistema específico |
-| NIPS | Network IPS — Bloquea amenazas en red |
-| HIPS | Host IPS — Bloquea amenazas en el host |
+| NIDS | Monitorea tráfico de red completo |
+| HIDS | Monitorea un sistema específico |
+| NIPS | Bloquea amenazas a nivel de red |
+| HIPS | Bloquea amenazas en el host |
 
-> 💼 **Aplicación práctica:** El IPS detecta un escaneo de puertos masivo desde una IP externa y la bloquea automáticamente durante 24 horas, notificando al equipo de seguridad.
+> 💼 **Aplicación práctica:** El IPS detecta un escaneo de puertos masivo y bloquea automáticamente la IP atacante durante 24 horas.
 
 ---
 
 ### 10. SIEM
 
-**Definición:** Plataforma que centraliza y correlaciona en tiempo real los eventos y logs de múltiples fuentes para detectar amenazas complejas y facilitar la respuesta a incidentes.
+<img src="https://www.logsign.com/wp-content/uploads/2021/10/siem-architecture.png" width="500" alt="SIEM Architecture">
+
+**Definición:** Plataforma que centraliza y correlaciona en tiempo real eventos y logs de múltiples fuentes para detectar amenazas complejas.
 ```
-🔥 Firewall ────┐
-🖥️ Servidores ──┤
-💻 Endpoints ───┼──► 📊 SIEM CENTRAL ──► 🚨 Alertas
-☁️ Cloud ───────┤                    ──► 📈 Dashboards
-📱 Mobile ──────┘                    ──► 📋 Reportes
+🔥 Firewall ──┐
+🖥️ Servidores ─┤
+💻 Endpoints ──┼──► 📊 SIEM ──► 🚨 Alertas
+☁️ Cloud ──────┤          ──► 📈 Dashboards
+📱 Mobile ─────┘          ──► 📋 Reportes
 ```
 
-| Función | Descripción |
-|---------|-------------|
-| Correlación | Relaciona eventos de múltiples fuentes |
-| Análisis | Detecta comportamientos anómalos |
-| Alertas | Notificaciones inteligentes en tiempo real |
-| Forense | Soporte para investigación post-incidente |
-
-> 💼 **Aplicación práctica:** El SIEM detecta login fallido desde China + login exitoso desde España 2 minutos después (físicamente imposible), generando alerta crítica de cuenta comprometida.
+> 💼 **Aplicación práctica:** El SIEM detecta login desde China + login desde España con 2 minutos de diferencia → alerta crítica de cuenta comprometida.
 
 ---
 
 ### 11. Análisis de Tráfico de Red
 
-**Definición:** Proceso de captura, inspección y análisis de paquetes para detectar anomalías, comportamientos maliciosos y fugas de datos.
+<img src="https://www.wireshark.org/docs/wsug_html_chunked/images/ws-main.png" width="500" alt="Wireshark Traffic Analysis">
 
-| Origen IP | Destino | Protocolo | Puerto | Estado |
-|-----------|---------|-----------|--------|--------|
-| 192.168.1.50 | 8.8.8.8 | DNS | 53 | 🟢 Normal |
-| 192.168.1.50 | Google | HTTPS | 443 | 🟢 Normal |
-| 192.168.1.75 | 45.142.x.x | UNKNOWN | 4444 | 🔴 Sospechoso |
+**Definición:** Captura e inspección de paquetes de datos para detectar anomalías, comportamientos maliciosos y fugas de datos.
 
-**Indicadores de tráfico anómalo:**
-- 🔴 Puertos no estándar (`4444`, `31337`, `12345`)
-- 🔴 Tráfico cifrado hacia IPs desconocidas
-- 🔴 Volumen excesivo de datos salientes
-- 🔴 Patrones repetitivos cada N minutos *(beacon de malware)*
+| IP Origen | Destino | Puerto | Estado |
+|-----------|---------|--------|--------|
+| 192.168.1.50 | 8.8.8.8 | 53 (DNS) | 🟢 Normal |
+| 192.168.1.50 | Google | 443 (HTTPS) | 🟢 Normal |
+| 192.168.1.75 | IP Rusa | 4444 | 🔴 Sospechoso |
 
-> 💼 **Aplicación práctica:** Con Wireshark se descubre que un equipo envía datos cifrados cada 5 minutos a una IP en Rusia — indicador de malware C&C (Command & Control beacon).
+> 💼 **Aplicación práctica:** Wireshark descubre que un equipo envía datos cada 5 minutos a una IP desconocida — indicador de malware C&C beacon.
 
 ---
 
 ### 12. Log de Auditoría
 
-**Definición:** Registro cronológico e inmutable de todas las actividades en un sistema, incluyendo quién hizo qué, cuándo, desde dónde y con qué resultado.
+<img src="https://www.digicert.com/cms/images/security-benefits-audit-logging.png" width="500" alt="Audit Log">
 
-| Timestamp | Usuario | Acción | IP Origen | Resultado |
-|-----------|---------|--------|-----------|-----------|
-| 2026-03-13 08:15 | jsmith | LOGIN | 192.168.1.10 | ✅ OK |
-| 2026-03-13 14:33 | mjones | DELETE | 192.168.1.20 | ✅ OK |
-| 2026-03-13 15:45 | unknown | LOGIN_ATTEMPT | 94.23.157.8 | ❌ FAIL |
-| 2026-03-13 15:45 | unknown | LOGIN_ATTEMPT | 94.23.157.8 | ❌ FAIL |
-| 2026-03-13 15:45 | unknown | LOGIN_ATTEMPT | 94.23.157.8 | ❌ FAIL |
+**Definición:** Registro cronológico e inmutable de todas las actividades del sistema — quién, qué, cuándo, desde dónde y con qué resultado.
 
-> ⚠️ 3 intentos fallidos consecutivos = **posible ataque de fuerza bruta**
+| Timestamp | Usuario | Acción | Resultado |
+|-----------|---------|--------|-----------|
+| 2026-03-13 08:15 | jsmith | LOGIN | ✅ OK |
+| 2026-03-13 15:45 | unknown | LOGIN_ATTEMPT | ❌ FAIL |
+| 2026-03-13 15:45 | unknown | LOGIN_ATTEMPT | ❌ FAIL |
+| 2026-03-13 15:45 | unknown | LOGIN_ATTEMPT | ❌ FAIL |
 
-> 💼 **Aplicación práctica:** Tras una brecha, el equipo forense reconstruye exactamente qué archivos accedió el atacante, qué copió y cuánto tiempo estuvo — información crítica para el análisis post-incidente.
+> ⚠️ 3 intentos fallidos = **posible ataque de fuerza bruta**
+
+> 💼 **Aplicación práctica:** El equipo forense usa logs para reconstruir exactamente qué hizo el atacante tras una brecha de seguridad.
 
 ---
 
 ## ⚠️ Gestión de Amenazas
 
-### 13. DDoS — Denegación de Servicio Distribuida
+### 13. DDoS
 
-**Definición:** Ataque que usa múltiples sistemas comprometidos (botnet) para inundar un servidor con tráfico masivo, agotando recursos y haciéndolo inaccesible.
+<img src="https://www.cloudflare.com/img/learning/ddos/what-is-a-ddos-attack/ddos-attack-traffic-metaphor.png" width="500" alt="DDoS Attack">
+
+**Definición:** Ataque que usa múltiples sistemas comprometidos (botnet) para inundar un servidor hasta hacerlo inaccesible.
 ```
 🤖 Bot 1 ──┐
 🤖 Bot 2 ──┤
 🤖 Bot 3 ──┼──► [Miles de peticiones] ──► 🖥️ VÍCTIMA 💥
-🤖 Bot N ──┘          ↑
-                  [BOTNET C&C]
-                  Atacante 👨‍💻
+🤖 Bot N ──┘
 ```
 
-| Tipo | Descripción |
-|------|-------------|
-| 📊 Volumétrico | Inunda con tráfico masivo (UDP/ICMP flood) |
-| 🔌 Protocolo | Agota recursos de conexión (SYN flood) |
-| 🖥️ Capa Aplicación | Ataca la app web (HTTP flood) |
+| Tipo | Método |
+|------|--------|
+| 📊 Volumétrico | UDP/ICMP flood — satura el ancho de banda |
+| 🔌 Protocolo | SYN flood — agota conexiones TCP |
+| 🖥️ Aplicación | HTTP flood — colapsa la app web |
 
-> 💼 **Mitigación:** CDN (Cloudflare/Akamai) + Rate limiting + Anycast + Filtrado por geolocalización.
+> 💼 **Mitigación:** Cloudflare CDN + Rate limiting + Anycast + Filtrado por geolocalización.
 
 ---
 
 ### 14. Phishing
 
-**Definición:** Técnica de ingeniería social donde el atacante suplanta entidades legítimas para robar credenciales o instalar malware.
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Phishingposter.svg/800px-Phishingposter.svg.png" width="500" alt="Phishing Attack">
+
+**Definición:** Ingeniería social donde el atacante suplanta entidades legítimas para robar credenciales o instalar malware.
 ```
-1️⃣ Email falso       2️⃣ Enlace malicioso      3️⃣ Sitio clonado
-banco@baneo.com ──► http://ban-co.xyz ──► [Formulario falso]
-     ⚠️ Error              ⚠️ Dominio              ↓
-                           sospechoso       4️⃣ Robo de credenciales
+1️⃣ Email falso ──► 2️⃣ Link malicioso ──► 3️⃣ Sitio clonado ──► 4️⃣ Robo
+banco@baneo.com    http://ban-co.xyz      [Formulario falso]   💳 Datos
 ```
 
 **Señales de alerta:**
-- ⚠️ Errores ortográficos en el dominio del remitente
-- ⚠️ Urgencia excesiva: *"Actúe ahora o su cuenta será bloqueada"*
+- ⚠️ Errores ortográficos en el dominio
+- ⚠️ Urgencia excesiva: *"¡Actúe ahora!"*
 - ⚠️ URLs sospechosas al pasar el cursor
 - ⚠️ Solicitud de datos sensibles por email
 
-> 💼 **Contramedidas:** Verificar dominio, gestor de contraseñas, simulacros de phishing para empleados.
+> 💼 **Contramedidas:** Verificar dominio + gestor de contraseñas + simulacros de phishing para empleados.
 
 ---
 
 ### 15. Vulnerabilidad Zero-Day
 
-**Definición:** Fallo desconocido para el fabricante sin parche disponible. *"Zero-day"* = los desarrolladores tienen 0 días para corregirlo antes de ser explotado.
+<img src="https://www.crowdstrike.com/wp-content/uploads/2021/03/zero-day-attack-explained.png" width="500" alt="Zero Day Vulnerability">
+
+**Definición:** Fallo desconocido para el fabricante sin parche disponible. Los desarrolladores tienen **0 días** para corregirlo antes de ser explotado.
 ```
-Día 0      Día 15         Día 30        Día 45
-  │           │              │             │
-🔍 Atacante  🕵️ Fabricante  ⚙️ Desarrollo  📦 Parche
-  descubre    descubre       del parche    publicado
-  el fallo    el fallo
-  │←──────────────────────────────────────►│
-            🚨 ZONA DE PELIGRO (sin protección)
+Día 0        Día 15          Día 30        Día 45
+  │             │               │             │
+🔍 Atacante  🕵️ Fabricante   ⚙️ Desarrollo  📦 Parche
+  descubre     descubre        del parche    publicado
+  │◄──────────────────────────────────────────►│
+              🚨 ZONA DE PELIGRO ACTIVO
 ```
 
 **Caso real — Log4Shell (CVE-2021-44228):**
@@ -292,4 +316,42 @@ Día 0      Día 15         Día 30        Día 45
 | 10-Dic-2021 | 🚨 Millones de intentos de explotación |
 | 13-Dic-2021 | 📦 Apache publica parche v2.15.0 |
 
-> 💼 **Mitigación:** Segmentación de red, WAF, monitoreo continuo y aplicación inmediata de parches al ser publicados.
+> 💼 **Mitigación:** Segmentación de red + WAF + monitoreo continuo + aplicar parches inmediatamente.
+
+---
+
+## 📋 Tabla Resumen
+
+| # | Término | Categoría | Herramienta |
+|---|---------|-----------|-------------|
+| 1 | Firewall | 🔐 Control Acceso | pfSense, Cisco ASA |
+| 2 | VPN | 🔐 Control Acceso | OpenVPN, WireGuard |
+| 3 | MFA | 🔐 Control Acceso | Google Auth, FIDO2 |
+| 4 | RBAC | 🔐 Control Acceso | Active Directory, AWS IAM |
+| 5 | SSL/TLS | 🔒 Cifrado | Let's Encrypt, OpenSSL |
+| 6 | AES | 🔒 Cifrado | BitLocker, FileVault |
+| 7 | PKI | 🔒 Cifrado | DigiCert, EJBCA |
+| 8 | Cript. Asimétrica | 🔒 Cifrado | RSA, ECC, PGP |
+| 9 | IDS/IPS | 👁️ Monitoreo | Snort, Suricata |
+| 10 | SIEM | 👁️ Monitoreo | Splunk, QRadar |
+| 11 | Análisis Tráfico | 👁️ Monitoreo | Wireshark, tcpdump |
+| 12 | Log Auditoría | 👁️ Monitoreo | Syslog, ELK Stack |
+| 13 | DDoS | ⚠️ Amenazas | Cloudflare, AWS Shield |
+| 14 | Phishing | ⚠️ Amenazas | ProofPoint, KnowBe4 |
+| 15 | Zero-Day | ⚠️ Amenazas | CVE Database, NVD |
+
+---
+
+## 📚 Bibliografía
+
+1. NIST (2023). *SP 800-53.* https://csrc.nist.gov
+2. Stallings, W. (2022). *Cryptography and Network Security* (8th ed.). Pearson.
+3. OWASP (2023). *OWASP Top Ten.* https://owasp.org
+4. RFC 8446 (2018). *TLS 1.3.* IETF. https://datatracker.ietf.org/doc/html/rfc8446
+5. MITRE (2024). *ATT&CK Framework.* https://attack.mitre.org/
+
+---
+
+<div align="center">
+  <sub>🔐 Glosario de Seguridad en Redes · 2026 · Navarro111</sub>
+</div>
